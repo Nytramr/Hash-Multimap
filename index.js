@@ -2,26 +2,49 @@
 
 
 module.exports = (function (){
-  var _keys = [];
-  var _values = [];
   
-  var HashMultimap = function () {};
+  //Adding remove to arrays
+  if(Array.prototype.remove === undefined) {
+    Array.prototype.remove = function () {
+      for (var j = arguments.length - 1; j >= 0; j--) {
+        var index = this.length - 1;
+        while (index >= 0) {
+          if (this[index] !== arguments[j]) {
+            index--;
+          } else {
+            this.splice(index, 1);
+          }
+        }
+      }
+    }
+  }
+  
+  if (Array.prototype.removeIndex === undefined){
+    Array.prototype.removeIndex = function (index){
+      this.splice(index, 1);
+    }
+  }
+  
+  var HashMultimap = function () {
+    this._keys = [];
+    this._values = [];
+  };
   
   HashMultimap.prototype.clear = function(){
-    _keys = [];
-    _values = [];
+    this._keys = [];
+    this._values = [];
   };
   
   HashMultimap.prototype.get = function(key){
-    var i = _keys.indexOf(key);
+    var i = this._keys.indexOf(key);
     
     if(i >= 0) {
-      return _values[i];
+      return this._values[i];
     }
     
-    _keys.push(key);
+    this._keys.push(key);
     var res = [];
-    _values.push(res);
+    this._values.push(res);
     return res;
   };
   
@@ -30,13 +53,27 @@ module.exports = (function (){
     var len = arguments.length;
     var i;
     
-    for(i = 1, i < len; i++) {
-      values.push(len[i]);
+    for(i = 1; i < len; i++) {
+      values.push(arguments[i]);
+    }
+  };
+  
+  HashMultimap.prototype.remove = function(key){
+    var values = this.get(key);
+    var len = arguments.length;
+    var i;
+
+    for(i = 1; i < len; i++) {
+      values.remove(arguments[i]);
+    }
+    
+    if (index > -1) {
+      array.splice(index, 1);
     }
   };
   
   HashMultimap.prototype.removeAll = function(key){
-    
+
   };
 
   HashMultimap.prototype.replaceValues  = function(key){
@@ -44,9 +81,9 @@ module.exports = (function (){
 
   };
 
-//  HashMultimap.prototype.isEmpty  = function(){
-//
-//  };
+  HashMultimap.prototype.keys()  = function(){
+
+  };
 //  
 //  HashMultimap.prototype.isEmpty  = function(){
 //
