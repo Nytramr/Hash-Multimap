@@ -60,20 +60,17 @@ module.exports = (function (){
   
   HashMultimap.prototype.remove = function(key){
     var values = this.get(key);
-    var len = arguments.length;
-    var i;
-
-    for(i = 1; i < len; i++) {
-      values.remove(arguments[i]);
-    }
-    
-    if (index > -1) {
-      array.splice(index, 1);
-    }
+    var items = Array.prototype.slice.call(arguments, 1);
+    values.remove(arguments[i]); 
   };
   
   HashMultimap.prototype.removeAll = function(key){
-
+    var index = this._keys.indexOf(key);
+    
+    if (index >= 0){
+      this._keys.removeIndex(index);
+      thid._values.removeIndex(index);
+    }
   };
 
   HashMultimap.prototype.replaceValues  = function(key){
