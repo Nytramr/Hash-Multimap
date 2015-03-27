@@ -78,14 +78,24 @@ module.exports = (function (){
 
   };
 
-  HashMultimap.prototype.keys()  = function(){
-
+  HashMultimap.prototype.keys = function(){
+    
   };
-//  
-//  HashMultimap.prototype.isEmpty  = function(){
-//
-//  };
-//  
+  
+  HashMultimap.prototype.contains  = function(){
+    //Returns true if the multimap contains the specified key-value pair.
+  };
+  
+  HashMultimap.prototype.containsKey  = function(){
+    //Returns true if the multimap contains any values for the specified key.
+  };
+  
+  HashMultimap.prototype.containsValue  = function(){
+    //Returns true if the multimap contains the specified value for any key.
+  };
+  
+  
+  
 //  HashMultimap.prototype.isEmpty  = function(){
 //
 //  };
