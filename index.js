@@ -6,33 +6,37 @@ module.exports = (function (){
   //Adding remove to arrays
   if(Array.prototype.remove === undefined) {
     Array.prototype.remove = function () {
+      var result = [];
       for (var j = arguments.length - 1; j >= 0; j--) {
         var index = this.length - 1;
         while (index >= 0) {
           if (this[index] !== arguments[j]) {
             index--;
           } else {
-            this.splice(index, 1);
+            result.push(this.splice(index, 1)[0]);
           }
         }
       }
+      return result;
     }
   }
   
   if (Array.prototype.removeIndex === undefined){
     Array.prototype.removeIndex = function (index){
-      this.splice(index, 1);
+      return this.splice(index, 1);
     }
   }
   
   var HashMultimap = function () {
     this._keys = [];
     this._values = [];
+    this.length = 0;
   };
   
   HashMultimap.prototype.clear = function(){
     this._keys = [];
     this._values = [];
+    this.length = 0;
   };
   
   HashMultimap.prototype.get = function(key){
@@ -69,7 +73,7 @@ module.exports = (function (){
     
     if (index >= 0){
       this._keys.removeIndex(index);
-      thid._values.removeIndex(index);
+      this._values.removeIndex(index);
     }
   };
 
