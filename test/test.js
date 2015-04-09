@@ -23,14 +23,28 @@ describe ('Hash Multimap', function () {
   
   it('Should Initiate empty', function () {
     hashMultimap.should.not.be.undefined;
-    hashMultimap.should.have.property('length').that.is.equals(0);
+    hashMultimap.should.have.property('_keys');
+    hashMultimap._keys.should.have.property('length').that.is.equals(0);
   });
-  
-  hashMultimap.put(1, 'string');
   
   it('Should add an Object', function () {
-    hashMultimap.should.have.property('length').that.is.equals(0);
+    hashMultimap.put(1, 'string');
+    hashMultimap._keys.should.have.property('length').that.is.equals(1);
+    hashMultimap._keys.should.have.property(0);
+    hashMultimap._values[0].should.have.length(1);
   });
+  
+  it('Should add a second Object', function () {
+    hashMultimap.put(1, 'another string');
+    hashMultimap._keys.should.have.property('length').that.is.equals(1);
+    hashMultimap._keys.should.have.property(0);
+    hashMultimap._values[0].should.have.length(2);
+  });
+  
+//  it('Should add a second Object', function () {
+//    hashMultimap.put(1, 'another string');
+//    hashMultimap._keys.should.have.property('length').that.is.equals(1);
+//  });
 
 //  //  after(function () {
 //  //    console.log('FINISH');

@@ -30,13 +30,11 @@ module.exports = (function (){
   var HashMultimap = function () {
     this._keys = [];
     this._values = [];
-    this.length = 0;
   };
   
   HashMultimap.prototype.clear = function(){
     this._keys = [];
     this._values = [];
-    this.length = 0;
   };
   
   HashMultimap.prototype.get = function(key){
