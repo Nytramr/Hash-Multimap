@@ -63,7 +63,7 @@ module.exports = (function (){
   HashMultimap.prototype.remove = function(key){
     var values = this.get(key);
     var items = Array.prototype.slice.call(arguments, 1);
-    values.remove(arguments[i]); 
+    Array.prototype.remove.apply(values, items);
   };
   
   HashMultimap.prototype.removeAll = function(key){
