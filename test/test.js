@@ -46,8 +46,8 @@ describe ('Hash Multimap', function () {
 
   it('Should put 3 objects at the same time with a different key', function () {
     hashMultimap.put(objectKey2, 'value3', 'value4', 'value5');
-    hashMultimap._keys.should.have.property('length').that.is.equals(2);
-    hashMultimap._values.should.have.property('length').that.is.equals(2);
+    hashMultimap._keys.should.have.length(2);
+    hashMultimap._values.should.havelength(2);
     hashMultimap._values[1].should.have.length(3);
   });
 
@@ -72,8 +72,8 @@ describe ('Hash Multimap', function () {
 
   it('Should put an object with a function as its key', function () {
     hashMultimap.put(functionKey, 'string2');
-    hashMultimap._keys.should.have.property('length').that.is.equals(3);
-    hashMultimap._values.should.have.property('length').that.is.equals(3);
+    hashMultimap._keys.should.have.length(3);
+    hashMultimap._values.should.have.length(3);
     hashMultimap._keys.should.have.property(2);
     hashMultimap._values[2].should.have.length(1);
   });
@@ -86,19 +86,19 @@ describe ('Hash Multimap', function () {
 
   it('Should remove an object from objectKey2 array', function () {
     hashMultimap.remove(objectKey2, 'value4');
-    hashMultimap._keys.should.have.property('length').that.is.equals(3);
-    hashMultimap._values.should.have.property('length').that.is.equals(3);
+    hashMultimap._keys.should.have.length(3);
+    hashMultimap._values.should.have.length(3);
     hashMultimap._values[1].should.have.length(2);
   });
 
   it('Should put 3 objects and then remove them at once', function () {
     hashMultimap.put(objectKey2, 'value5', 'value5', 'value5');
-    hashMultimap._keys.should.have.property('length').that.is.equals(3);
-    hashMultimap._values.should.have.property('length').that.is.equals(3);
+    hashMultimap._keys.should.have.length(3);
+    hashMultimap._values.should.have.length(3);
     hashMultimap._values[1].should.have.length(5);
     hashMultimap.remove(objectKey2, 'value5');
-    hashMultimap._keys.should.have.property('length').that.is.equals(3);
-    hashMultimap._values.should.have.property('length').that.is.equals(3);
+    hashMultimap._keys.should.have.length(3);
+    hashMultimap._values.should.have.length(3);
     hashMultimap._values[1].should.have.length(1);
   });
 
