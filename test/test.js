@@ -47,7 +47,7 @@ describe ('Hash Multimap', function () {
   it('Should put 3 objects at the same time with a different key', function () {
     hashMultimap.put(objectKey2, 'value3', 'value4', 'value5');
     hashMultimap._keys.should.have.length(2);
-    hashMultimap._values.should.havelength(2);
+    hashMultimap._values.should.have.length(2);
     hashMultimap._values[1].should.have.length(3);
   });
 
@@ -105,7 +105,7 @@ describe ('Hash Multimap', function () {
   it('Should remove an the entire objectKey', function () {
     hashMultimap.removeAll(objectKey);
     hashMultimap._keys.should.have.length(2);
-    hashMultimap._values.should.havelength(2);
+    hashMultimap._values.should.have.length(2);
   });
   //  after(function () {
   //    console.log('FINISH');
